@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- bean definitions here -->
+<!--    <bean id="paymentService" class="in.saurabh.PaymentService">-->
+<!--        <constructor-arg value="UPI" />-->
+<!--    </bean>-->
+
+<!--    <bean id="paymentService" class="in.saurabh.PaymentService">-->
+<!--        <constructor-arg name="type" value="UPI"/>-->
+<!--    </bean>-->
+
+
+<!--    <bean id="orderService" class="in.saurabh.OrderService">-->
+<!--        <property name="paymentServiceBean" ref="paymentService"/>-->
+<!--    </bean>-->
+<!--    <bean id="orderService" class="in.saurabh.OrderService">-->
+<!--        <constructor-arg ref="paymentService"/>-->
+<!--    </bean>-->
+<!--    <bean id="orderServiceT" class="in.saurabh.OrderService"> </bean>-->
+
+<!--    <bean id="upiPaymentMode" class="in.saurabh.UPIpaymentMode">-->
+
+<!--    </bean>-->
+
+<!--    <bean id="cartPaymentMode" class="in.saurabh.CardPaymentMode">-->
+
+<!--    </bean>-->
+
+<!--    <bean id="orderService" class="in.saurabh.OrderService">-->
+<!--        <constructor-arg ref="upiPaymentMode"/>-->
+
+<!--    </bean>-->
+
+<!--    <bean-->
+<!--            id="userService"-->
+<!--            class="in.saurabh.UserService"-->
+<!--            scope="prototype">-->
+<!--&lt;!&ndash;        <constructor-arg value="saurabh"/>&ndash;&gt;-->
+<!--        <constructor-arg name="userNames">-->
+<!--            <list>-->
+<!--               <value>Saurabh</value>-->
+<!--                <value>Vanshika</value>-->
+<!--                <value>Aman</value>-->
+<!--                <value>Abhishek</value>-->
+<!--            </list>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+
+    <bean id="userService" class="in.saurabh.UserService" init-method="init" destroy-method="cleanup">
+
+    </bean>
+
+
+
+
+</beans>

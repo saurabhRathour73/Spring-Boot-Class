@@ -1,0 +1,12 @@
+package in.saurabh.OrderService;
+
+public class OrderService {
+
+    EmailService notification = new EmailService();
+
+    public void placeOrder(){
+
+        System.out.println("Order Placed");
+        notification.sendNotification();
+    }
+}
