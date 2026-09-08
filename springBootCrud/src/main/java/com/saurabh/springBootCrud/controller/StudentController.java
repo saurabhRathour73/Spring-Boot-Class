@@ -81,7 +81,7 @@ public class StudentController {
 
     // deleted methode softly  // yaha ham patch method ka use karenge maping ke liye
     // soft delete --> PATCH -> /api/students/delete-soft/{id}
-   @PatchMapping
+   @PatchMapping("/delete-soft/{id}")
    public ResponseEntity<String> deleteStudentSoftly(@PathVariable Long id){
       Boolean isDeleted = studentService.deleteStudentSoftly(id);
       if(!isDeleted){

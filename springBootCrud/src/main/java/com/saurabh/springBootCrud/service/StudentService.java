@@ -25,7 +25,7 @@ public class StudentService {
     }
 
     public  Student getStudent(Long id){
-        Optional<Student> studentResp = studentRepository.findById(id);
+        Optional<Student> studentResp = studentRepository.findByIdAndDeletedFalse(id);
 
         if (studentResp.isPresent()){
             return  studentResp.get();
@@ -35,12 +35,12 @@ public class StudentService {
     }
 
     public List<Student> getAllStudent(){
-        List<Student> allStudentList = studentRepository.findAll();
+        List<Student> allStudentList = studentRepository.findByDeletedIsFalse();
         return allStudentList;
     }
 
     public Student updateStudent(Long id , Student student){
-        Optional<Student> isStudent = studentRepository.findById(id);
+        Optional<Student> isStudent = studentRepository.findByIdAndDeletedFalse(id);
         if(isStudent.isEmpty()){
             return  null;
         }
@@ -51,7 +51,7 @@ public class StudentService {
         studentToSeve.setRollNo(student.getRollNo());
         studentToSeve.setCollageName(student.getCollageName());
         studentToSeve.setSubject(student.getSubject());
-
+        studentToSeve.setDeleted(false);
         return studentRepository.save(studentToSeve);
 
 
@@ -68,7 +68,19 @@ public class StudentService {
     }
 
     public Boolean deleteStudentSoftly(Long id){
-        return false;
+        // get record
+       Optional<Student> existingStudent=
+               studentRepository.findByIdAndDeletedFalse(id);
+       if(existingStudent.isEmpty()) return  false;
+
+       Student studentToseve = existingStudent.get();
+        // delete = 1
+       studentToseve.setDeleted(true);
+       studentRepository.save((studentToseve));
+
+
+        // save
+        return true;
     }
 
     // 1. End point listen (//app/students post)
